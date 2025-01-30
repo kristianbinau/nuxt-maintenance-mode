@@ -14,20 +14,55 @@ Nuxt module, that allows you to put your site into maintenance mode.
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+
+- 📝 &nbsp;Customizable maintenance page, by handling the 503 status code
+- 🏷️ &nbsp;Define pages to be included, with wildcard support
+- 🔖 &nbsp;Define pages to be excluded, with wildcard support
 
 ## Quick Setup
 
 Install the module to your Nuxt application with one command:
 
 ```bash
-npx nuxi module add nuxt-maintenance-mode
+npx nuxi module add @kristianbinau/nuxt-maintenance-mode
 ```
 
 That's it! You can now use Maintenance Mode in your Nuxt app ✨
 
+## Usage
+
+Add the following configuration to your `nuxt.config.js`:
+
+```js
+  maintenanceMode: {
+    enabled: true,
+  }
+```
+
+## Options
+
+### `enabled`
+
+- Type: `boolean`
+- Default: `false`
+
+Enable or disable the maintenance mode.
+
+### `include`
+
+- Type: `string[] | null`
+- Default: `null`
+
+Define pages to be included in the maintenance mode. Supports wildcard `*`.
+
+### `exclude`
+
+- Type: `string[] | null`
+- Default: `null`
+
+Define pages to be excluded from the maintenance mode. Supports wildcard `*`.
+
+<small>When both `exclude` and `include` are set, `include` will take precedence</small>
 
 ## Contribution
 
@@ -60,16 +95,13 @@ That's it! You can now use Maintenance Mode in your Nuxt app ✨
 
 </details>
 
-
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-maintenance-mode/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/nuxt-maintenance-mode
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-maintenance-mode.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npm.chart.dev/nuxt-maintenance-mode
-
-[license-src]: https://img.shields.io/npm/l/nuxt-maintenance-mode.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/nuxt-maintenance-mode
-
+[npm-version-src]: https://img.shields.io/npm/v/@kristianbinau/nuxt-maintenance-mode/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-version-href]: https://npmjs.com/package/@kristianbinau/nuxt-maintenance-mode
+[npm-downloads-src]: https://img.shields.io/npm/dm/@kristianbinau/nuxt-maintenance-mode.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-downloads-href]: https://npm.chart.dev/@kristianbinau/nuxt-maintenance-mode
+[license-src]: https://img.shields.io/npm/l/@kristianbinau/nuxt-maintenance-mode.svg?style=flat&colorA=020420&colorB=00DC82
+[license-href]: https://npmjs.com/package/@kristianbinau/nuxt-maintenance-mode
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
