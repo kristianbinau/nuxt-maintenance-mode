@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/kristianbinau/nuxt-maintenance-mode/compare/v0.0.1...v0.0.2)
+
+### 🩹 Fixes
+
+- Solve issue with import of middleware not working & remove console.log ([ebe5c16](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/ebe5c16))
+
+### 🏡 Chore
+
+- Update README w/ correct links & Usage section ([41f734c](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/41f734c))
+
+### ❤️ Contributors
+
+- Kristian Binau ([@kristianbinau](http://github.com/kristianbinau))
+
 ## v0.0.1
 
 
