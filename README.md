@@ -18,6 +18,7 @@ Nuxt module, that allows you to put your site into maintenance mode.
 - 📝 &nbsp;Customizable maintenance page, by handling the 503 status code
 - 🏷️ &nbsp;Define pages to be included, with wildcard support
 - 🔖 &nbsp;Define pages to be excluded, with wildcard support
+- 🚀 &nbsp;Typescript ready!
 
 ## Quick Setup
 
@@ -31,9 +32,9 @@ That's it! You can now use Maintenance Mode in your Nuxt app ✨
 
 ## Usage
 
-Add the following configuration to your `nuxt.config.js`:
+Add the following configuration to your `nuxt.config.ts`:
 
-```js
+```ts
   maintenanceMode: {
     enabled: true,
   }
