@@ -55,7 +55,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add Nitro Middleware
     addServerHandler({
-      handler: resolve('./runtime/server/middleware.ts'),
+      handler: resolve('./runtime/server/middleware'),
       middleware: true,
     })
   },

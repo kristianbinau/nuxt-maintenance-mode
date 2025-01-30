@@ -4,8 +4,6 @@ export default defineEventHandler((event) => {
   const { enabled, exclude, include }
     = useRuntimeConfig().public.maintenanceMode
 
-  console.log('maintenanceMode', enabled, exclude, include)
-
   if (!enabled) {
     return
   }
