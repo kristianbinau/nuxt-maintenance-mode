@@ -1,5 +1,4 @@
 import { defineNuxtModule, createResolver, addServerHandler } from '@nuxt/kit'
-import { defu } from 'defu'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -44,14 +43,12 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve } = createResolver(import.meta.url)
 
     // Add Options to Runtime Config
-    nuxt.options.runtimeConfig.public.maintenanceMode = defu(
-      nuxt.options.runtimeConfig.public.maintenanceMode,
-      {
-        enabled: options.enabled,
-        exclude: options.exclude,
-        include: options.include,
-      },
-    )
+    nuxt.options.runtimeConfig.public.maintenanceModeEnabled
+      ||= options.enabled
+    nuxt.options.runtimeConfig.public.maintenanceModeExclude
+      ||= options.exclude
+    nuxt.options.runtimeConfig.public.maintenanceModeInclude
+      ||= options.include
 
     // Add Nitro Middleware
     addServerHandler({

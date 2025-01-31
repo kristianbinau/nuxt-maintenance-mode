@@ -1,6 +1,10 @@
-import { defineEventHandler, useRuntimeConfig, createError } from '#imports'
+import {
+  defineNuxtRouteMiddleware,
+  useRuntimeConfig,
+  createError,
+} from '#imports'
 
-export default defineEventHandler((event) => {
+export default defineNuxtRouteMiddleware((event) => {
   const enabled = useRuntimeConfig().public.maintenanceModeEnabled
   const exclude = useRuntimeConfig().public.maintenanceModeExclude
   const include = useRuntimeConfig().public.maintenanceModeInclude

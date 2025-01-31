@@ -34,6 +34,7 @@ That's it! You can now use Maintenance Mode in your Nuxt app ✨
 
 Add the following configuration to your `nuxt.config.ts`:
 
+<small><code>nuxt.config.ts</code></small>
 ```ts
   maintenanceMode: {
     enabled: true,
@@ -64,6 +65,20 @@ Define pages to be included in the maintenance mode. Supports wildcard `*`.
 Define pages to be excluded from the maintenance mode. Supports wildcard `*`.
 
 <small>When both `exclude` and `include` are set, `include` will take precedence</small>
+
+#### Setting options via runtimeConfig
+
+You can also set the options via runtimeConfig:  
+<small>RuntimeConfig will take precedence over the options set in `nuxt.config.ts`</small>
+
+<small><code>nuxt.config.ts</code></small>
+```ts
+  runtimeConfig: {
+		public: {
+      maintenanceModeEnabled: process.env.NUXT_PUBLIC_MAINTENANCE_MODE_ENABLED,
+		},
+	},
+```
 
 ## Contribution
 
