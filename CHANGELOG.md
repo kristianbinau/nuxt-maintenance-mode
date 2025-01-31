@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/kristianbinau/nuxt-maintenance-mode/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Allow overriding options from runtimeConfig ([7ab2d43](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/7ab2d43))
+- Add RouteMiddleware to also handle Client Navigations ([0b4a18f](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/0b4a18f))
+
+### 🏡 Chore
+
+- Add Typescript to README ([966b8d0](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/966b8d0))
+
+### ❤️ Contributors
+
+- Kristian Binau ([@kristianbinau](http://github.com/kristianbinau))
+
 ## v0.0.2
 
 [compare changes](https://github.com/kristianbinau/nuxt-maintenance-mode/compare/v0.0.1...v0.0.2)
