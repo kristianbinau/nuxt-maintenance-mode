@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/kristianbinau/nuxt-maintenance-mode/compare/v0.0.3...v0.0.4)
+
+### 🚀 Enhancements
+
+- Add bypassSecret, a secret that can be used to bypass maintenanceMode ([733ea98](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/733ea98))
+- Add useMaintenance composable, useful for determining maintenance status in pages. ([f8dbf84](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/f8dbf84))
+
+### 🏡 Chore
+
+- **release:** V0.0.3 ([8cd1920](https://github.com/kristianbinau/nuxt-maintenance-mode/commit/8cd1920))
+
+### ❤️ Contributors
+
+- Kristian Binau ([@kristianbinau](http://github.com/kristianbinau))
+
 ## v0.0.3
 
 [compare changes](https://github.com/kristianbinau/nuxt-maintenance-mode/compare/v0.0.2...v0.0.3)

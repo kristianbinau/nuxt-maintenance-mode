@@ -1,6 +1,6 @@
 {
   "name": "@kristianbinau/nuxt-maintenance-mode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Nuxt module, that allows you to put your site into maintenance mode",
   "repository": {
     "type": "git",
