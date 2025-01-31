@@ -1,4 +1,9 @@
-import { defineNuxtModule, createResolver, addServerHandler } from '@nuxt/kit'
+import {
+  defineNuxtModule,
+  createResolver,
+  addRouteMiddleware,
+  addServerHandler,
+} from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -49,6 +54,16 @@ export default defineNuxtModule<ModuleOptions>({
       ||= options.exclude
     nuxt.options.runtimeConfig.public.maintenanceModeInclude
       ||= options.include
+
+    // Add Middleware
+    addRouteMiddleware(
+      {
+        name: 'maintenance-mode',
+        path: resolve('./runtime/middleware'),
+        global: true,
+      },
+      { prepend: true },
+    )
 
     // Add Nitro Middleware
     addServerHandler({

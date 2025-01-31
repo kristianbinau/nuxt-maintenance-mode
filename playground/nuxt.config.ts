@@ -10,6 +10,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-27',
   maintenanceMode: {
     enabled: false,
-    include: ['/blog*'],
+    include: ['/blog*', '/api/*'],
   },
 })
