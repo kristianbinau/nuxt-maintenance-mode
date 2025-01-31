@@ -23,6 +23,4 @@
 
 <script setup lang="ts">
 const { data, status, error, refresh, clear } = await useFetch('/api/test')
-
-console.log(data, status, error)
 </script>

@@ -1,53 +1,43 @@
 import {
-  defineNuxtRouteMiddleware,
-  useRuntimeConfig,
-  createError,
-} from '#imports'
+  isMaintenanceEnabled,
+  getMaintenanceModeConfig,
+  isUnderMaintenance,
+  throwMaintenanceError,
+  BYPASS_COOKIE_NAME,
+} from './utils'
+import { defineNuxtRouteMiddleware, useCookie } from '#imports'
 
 export default defineNuxtRouteMiddleware((event) => {
-  const enabled = useRuntimeConfig().public.maintenanceModeEnabled
-  const exclude = useRuntimeConfig().public.maintenanceModeExclude
-  const include = useRuntimeConfig().public.maintenanceModeInclude
-
-  if (!enabled) {
+  // Early return if maintenance mode is not enabled.
+  if (!isMaintenanceEnabled()) {
     return
   }
 
-  if (include && !urlMatches(event.path, include)) {
-    return
-  }
+  const maintenanceConfig = getMaintenanceModeConfig()
 
-  if (exclude && urlMatches(event.path, exclude)) {
-    return
-  }
-
-  throw createError({
-    statusCode: 503,
-    statusMessage: 'Site is under maintenance',
+  // Handle GETTING Bypass
+  const bypassCookie = useCookie(BYPASS_COOKIE_NAME, {
+    maxAge: 60 * 60 * 24 * 7 * 4 * 12, // 1 year
+    sameSite: 'strict',
+    secure: true,
   })
-})
+  let bypassCookieValue: string | null = bypassCookie.value ?? null
 
-/**
- * Matches a given URL against an array of patterns.
- *
- * @param url The URL to match.
- * @param patterns An array of URL patterns to match against.
- * @returns True if the URL matches any of the patterns, false otherwise.
- */
-function urlMatches(url: string, patterns: string[]): boolean {
-  for (const pattern of patterns) {
-    // Create a regular expression from the pattern.
-    //
-    // - `^`: Matches the beginning of the string.
-    // - `$`: Matches the end of the string.
-    // - `.*`: Matches any character zero or more times.
-    // - `\/`: Matches a literal forward slash.
-    const regex = new RegExp(`^${pattern.replace(/\*/g, '.*')}$`)
-
-    if (regex.test(url)) {
-      return true
-    }
+  // Handle SETTING Bypass - We also do this
+  if (
+    maintenanceConfig.bypassSecret
+    && event.query.bypass === maintenanceConfig.bypassSecret
+  ) {
+    // Set the bypass cookie if the bypass query parameter is present, and it matches the bypass secret.
+    // This is used to bypass maintenance mode, in later requests.
+    bypassCookie.value = maintenanceConfig.bypassSecret
+    bypassCookieValue = maintenanceConfig.bypassSecret
   }
 
-  return false
-}
+  // Handle Maintenance Checks
+  if (!isUnderMaintenance(event.path, bypassCookieValue, maintenanceConfig)) {
+    return
+  }
+
+  throwMaintenanceError()
+})

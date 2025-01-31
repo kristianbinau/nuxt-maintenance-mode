@@ -18,6 +18,7 @@ Nuxt module, that allows you to put your site into maintenance mode.
 - 📝 &nbsp;Customizable maintenance page, by handling the 503 status code
 - 🏷️ &nbsp;Define pages to be included, with wildcard support
 - 🔖 &nbsp;Define pages to be excluded, with wildcard support
+- 🔑 &nbsp;Define a secret to bypass the maintenance mode
 - 🚀 &nbsp;Typescript ready!
 
 ## Quick Setup
@@ -49,6 +50,14 @@ Add the following configuration to your `nuxt.config.ts`:
 - Default: `false`
 
 Enable or disable the maintenance mode.
+
+### `bypassSecret`
+
+- Type: `string | null`
+- Default: `null`
+
+Define a secret to bypass the maintenance mode.  
+Navigate to `/?bypass={value}` to bypass the maintenance mode.	
 
 ### `include`
 

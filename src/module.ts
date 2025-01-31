@@ -11,6 +11,13 @@ export interface ModuleOptions {
    * Enable or disable the maintenance mode
    */
   enabled: boolean
+
+  /**
+   * Bypass secret, used to bypass maintenance mode
+   * If set, users can bypass maintenance mode by visiting `/?bypass=<bypassCodevalue>`
+   */
+  bypassSecret: string | null
+
   /**
    * Exclude paths from maintenance mode
    * If set, these paths will not be in maintenance mode
@@ -41,6 +48,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     enabled: false,
+    bypassSecret: null,
     exclude: null,
     include: null,
   },
@@ -50,6 +58,8 @@ export default defineNuxtModule<ModuleOptions>({
     // Add Options to Runtime Config
     nuxt.options.runtimeConfig.public.maintenanceModeEnabled
       ||= options.enabled
+    nuxt.options.runtimeConfig.public.maintenanceModeBypassSecret
+      ||= options.bypassSecret
     nuxt.options.runtimeConfig.public.maintenanceModeExclude
       ||= options.exclude
     nuxt.options.runtimeConfig.public.maintenanceModeInclude
