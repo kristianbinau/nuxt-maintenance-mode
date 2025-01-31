@@ -19,6 +19,8 @@ Nuxt module, that allows you to put your site into maintenance mode.
 - 🏷️ &nbsp;Define pages to be included, with wildcard support
 - 🔖 &nbsp;Define pages to be excluded, with wildcard support
 - 🔑 &nbsp;Define a secret to bypass the maintenance mode
+- 📦 &nbsp;Build-in Composables, enabling customizing page based on maintenance state.
+- 🎨 &nbsp;RuntimeConfig support
 - 🚀 &nbsp;Typescript ready!
 
 ## Quick Setup
@@ -87,6 +89,22 @@ You can also set the options via runtimeConfig:
       maintenanceModeEnabled: process.env.NUXT_PUBLIC_MAINTENANCE_MODE_ENABLED,
 		},
 	},
+```
+
+#### Composables
+
+The module provides a composable, that allows you to customize your page based on the maintenance state.
+
+```ts
+const url = useRequestURL();
+const { isUnderMaintenance } = useMaintenance(url.pathname);
+```
+
+In the example above, `isUnderMaintenance` will be `true` if the current page is under maintenance.  
+You can also pass a custom path to the `useMaintenance` composable.
+
+```ts
+const { isUnderMaintenance } = useMaintenance('/blog');
 ```
 
 ## Contribution

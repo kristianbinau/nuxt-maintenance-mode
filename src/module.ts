@@ -1,6 +1,7 @@
 import {
   defineNuxtModule,
   createResolver,
+  addImportsDir,
   addRouteMiddleware,
   addServerHandler,
 } from '@nuxt/kit'
@@ -64,6 +65,9 @@ export default defineNuxtModule<ModuleOptions>({
       ||= options.exclude
     nuxt.options.runtimeConfig.public.maintenanceModeInclude
       ||= options.include
+
+    // Add Composable
+    addImportsDir(resolve('./runtime/composables'))
 
     // Add Middleware
     addRouteMiddleware(

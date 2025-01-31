@@ -13,6 +13,11 @@
       </button>
 
       <div>
+        <p>Is under maintenance: {{ isUnderMaintenance }}</p>
+        <p>Is blog under maintenance: {{ isUnderMaintenanceBlog }}</p>
+      </div>
+
+      <div>
         <p>Status: {{ status }}</p>
         <p>Data: {{ data }}</p>
         <p>Error: {{ error }}</p>
@@ -23,4 +28,8 @@
 
 <script setup lang="ts">
 const { data, status, error, refresh, clear } = await useFetch('/api/test')
+
+const url = useRequestURL()
+const { isUnderMaintenance } = useMaintenance(url.pathname)
+const { isUnderMaintenance: isUnderMaintenanceBlog } = useMaintenance('/blog')
 </script>
