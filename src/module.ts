@@ -76,7 +76,7 @@ export default defineNuxtModule<ModuleOptions>({
         path: resolve('./runtime/middleware'),
         global: true,
       },
-      { prepend: true },
+      { prepend: true, override: true },
     )
 
     // Add Nitro Middleware
